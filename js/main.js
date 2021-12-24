@@ -41,7 +41,7 @@ function showPositive({ city, temperature, weather, nextRain }) {
   const text = positive.querySelector('p');
   text.innerHTML = `
   Right now there is ${temperature}ºC in ${city} with ${weather} and 
-  ${nextRain > 0 ? `probably it is going to rain in ${nextRain} hour(s)` : 'It is raining right now!!'}
+  ${nextRain > 0 ? `probably it is going to rain in ${nextRain} hour(s)` : 'it is raining right now!!'}
   `;
 }
 
@@ -59,11 +59,11 @@ async function getWeatherData({ latitude, longitude }) {
   try {
     //Pedir estado actual a la api
     const currentWeather = await getData({
-      url: `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric&lang=es`,
+      url: `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric&lang=en`,
     });
     //Pedir prediccion proximas horas a la api
     const nextHours = await getData({
-      url: `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,daily&appid=${API_KEY}&units=metric&lang=es`,
+      url: `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,daily&appid=${API_KEY}&units=metric&lang=en`,
     });
     //Comprobar si va a llover en las proximas RAIN_MARGIN horas
     const nextRain = nextHours.hourly.findIndex((hour) => {
