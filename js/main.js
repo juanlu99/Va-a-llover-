@@ -13,7 +13,7 @@ async function getData({ url, options = {} }) {
   const response = await fetch(url, options);
 
   if (!response.ok) {
-    throw new Error('Error en la petición.');
+    throw new Error('Error in the petition');
   }
 
   const data = await response.json();
@@ -40,8 +40,8 @@ function showPositive({ city, temperature, weather, nextRain }) {
   showPanel(positive);
   const text = positive.querySelector('p');
   text.innerHTML = `
-  Ahora mismo hay ${temperature}ºC en ${city} con ${weather} y 
-  ${nextRain > 0 ? `probablemente llueva en ${nextRain} hora(s)` : 'está lloviendo ahora mismo.'}
+  Right now there is ${temperature}ºC in ${city} with ${weather} and 
+  ${nextRain > 0 ? `probably it is going to rain in ${nextRain} hour(s)` : 'It is raining right now!!'}
   `;
 }
 
@@ -50,7 +50,7 @@ function showNegative({ city, weather, temperature }) {
   showPanel(negative);
   const text = negative.querySelector('p');
   text.innerHTML = `
-  Ahora mismo hay ${temperature}ºC en ${city} con ${weather} y no lloverá en las próximas ${RAIN_MARGIN} horas(s).
+  Right now there is ${temperature}ºC in ${city} with ${weather} and it is not going to rain for the next ${RAIN_MARGIN} hour(s).
   `;
 }
 
